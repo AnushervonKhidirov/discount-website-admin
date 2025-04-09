@@ -4,8 +4,9 @@ import type { LoginData } from '@type/auth.type';
 import { FormCard } from '@component/common/form-card/form-card';
 import { Form, Input, notification } from 'antd/es';
 
-import { AuthService } from '../../service/auth/auth.service';
-import { CookieService } from '../../service/cookie/cookie.service';
+import { AuthService } from '@service/auth/auth.service';
+import { CookieService } from '@service/cookie/cookie.service';
+import { Page } from '@constant/link.constant';
 
 const LoginPage = () => {
   const [api, context] = notification.useNotification();
@@ -18,7 +19,7 @@ const LoginPage = () => {
     if (err) return api.error({ message: err.error, description: err.message });
 
     await cookieService.setCookie(token);
-    window.location.replace('/');
+    window.location.replace(Page.Profile);
   };
 
   return (
