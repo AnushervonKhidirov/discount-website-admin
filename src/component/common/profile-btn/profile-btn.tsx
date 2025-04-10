@@ -2,6 +2,8 @@ import type { FC } from 'react';
 import type { User } from '@type/user.type';
 import type { AdditionalProps } from '@type/common.type';
 
+import '@ant-design/v5-patch-for-react-19';
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { Button, Avatar } from 'antd/es';
@@ -19,10 +21,12 @@ const ProfileBtn: FC<AdditionalProps> = async ({ className }) => {
   const user = JSON.parse(userJson) as User;
 
   return (
-    <Button className={classNames(classes.profile_btn, className)} href={Page.Profile}>
-      <Avatar className={classes.avatar} icon={<UserOutlined />} shape="square" />
-      <div className={classes.username}>{user.username}</div>
-      <div className={classes.role}>{user.role.toLowerCase().replace('_', ' ')}</div>
+    <Button className={classNames(classes.profile_btn, className)}>
+      <Link href={Page.Profile}>
+        <Avatar className={classes.avatar} icon={<UserOutlined />} shape="square" />
+        <div className={classes.username}>{user.username}</div>
+        <div className={classes.role}>{user.role.toLowerCase().replace('_', ' ')}</div>
+      </Link>
     </Button>
   );
 };
