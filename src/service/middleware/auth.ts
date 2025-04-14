@@ -34,8 +34,6 @@ export function authMiddleware(nextMiddleware: NextMiddleware): NextMiddleware {
 
     const id = +payload.sub;
     const [user, err] = await requestWithRefresh(() => userService.getUser(id), cookies);
-    console.log(user);
-    
 
     if (err) return redirectToLogin();
 

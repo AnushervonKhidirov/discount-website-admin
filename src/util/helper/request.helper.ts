@@ -25,8 +25,6 @@ export const requestWithRefresh = async <T>(
         const [tokens, tokenErr] = await authService.refreshToken(refreshToken);
         if (tokenErr) throw tokenErr;
 
-        console.log('refreshed', tokens);
-        
         await cookieService.setCookie(tokens);
 
         const [response, requestErr] = await request();
