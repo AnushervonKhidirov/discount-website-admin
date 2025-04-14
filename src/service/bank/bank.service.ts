@@ -1,5 +1,5 @@
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
-import type { Bank } from '@type/bank.type';
+import type { Bank, CreateBankData } from '@type/bank.type';
 import type { Token } from '@type/auth.type';
 
 import axios from 'axios';
@@ -68,6 +68,67 @@ export class BankService {
       }));
 
       return [banks, null];
+    } catch (err) {
+      return returnError(err);
+    }
+  }
+
+  async create(bankDto: CreateBankData): ReturnPromiseWithErr<Bank> {
+    try {
+      const cookieService = new CookieService(
+        typeof document !== 'object' ? this.cookies : undefined,
+      );
+
+      const { accessToken } = await cookieService.getCookie<Token>(['accessToken']);
+
+      const { data } = await axios.post<Bank | HttpError>(Endpoint.CreateBank, bankDto, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+        validateStatus: () => true,
+      });
+
+      if (isError(data)) throw new HttpError(data.status, data.error, data.message);
+
+      const bank = {
+        ...data,
+        createdAt: new Date(data.createdAt),
+        updatedAt: new Date(data.updatedAt),
+      };
+
+      return [bank, null];
+    } catch (err) {
+      return returnError(err);
+    }
+  }
+
+  async uploadLogo(id: number, file: File): ReturnPromiseWithErr<Bank> {
+    try {
+      const cookieService = new CookieService(
+        typeof document !== 'object' ? this.cookies : undefined,
+      );
+
+      const { accessToken } = await cookieService.getCookie<Token>(['accessToken']);
+
+      const formData = new FormData();
+      formData.append('file', file)
+
+      const { data } = await axios.post<Bank | HttpError>(
+        Endpoint.UploadBankLogo.replace(':id', id.toString()),
+        formData,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+          validateStatus: () => true,
+        },
+      );
+
+      if (isError(data)) throw new HttpError(data.status, data.error, data.message);
+
+      const bank = {
+        ...data,
+        createdAt: new Date(data.createdAt),
+        updatedAt: new Date(data.updatedAt),
+      };
+
+      return [bank, null];
     } catch (err) {
       return returnError(err);
     }

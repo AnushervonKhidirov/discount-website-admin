@@ -6,3 +6,11 @@ export type Bank = Readonly<{
   createdAt: Date;
   updatedAt: Date;
 }>;
+
+export type CreateBankData = {
+  name: string;
+};
+
+export type UpdateBankData = CreateBankData & {
+  file: File
+}

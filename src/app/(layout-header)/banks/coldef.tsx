@@ -17,6 +17,12 @@ export const columns: TableColumnsType<Bank> = [
     key: 'name',
   },
   {
+    title: 'Logo',
+    dataIndex: 'logoUrl',
+    key: 'logo',
+    render: (logo: Bank['logoUrl']) => <img src={`http://localhost:4000/${logo}`} height={25} />
+  },
+  {
     title: 'Created at',
     dataIndex: 'createdAt',
     key: 'createdAt',

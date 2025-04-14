@@ -2,11 +2,21 @@
 import type { Bank } from '@type/bank.type';
 
 import { useEffect, useState } from 'react';
-import { notification, Table } from 'antd/es';
+import Link from 'next/link';
+import { notification, Table, Button } from 'antd/es';
 import { BankService } from '@service/bank/bank.service';
 import { requestWithRefresh } from '@helper/request.helper';
 
+import { Page } from '@constant/link.constant';
 import { columns } from './coldef';
+
+const CreateBankBtn = () => {
+  return (
+    <Link href={Page.BankCreate}>
+      <Button type="primary">Create new bank</Button>
+    </Link>
+  );
+};
 
 const BanksPage = () => {
   const [api, context] = notification.useNotification();
@@ -30,7 +40,12 @@ const BanksPage = () => {
   return (
     <>
       {context}
-      <Table<Bank> dataSource={banks} columns={columns} rowKey={({ id }) => id} />
+      <Table<Bank>
+        dataSource={banks}
+        columns={columns}
+        footer={CreateBankBtn}
+        rowKey={({ id }) => id}
+      />
     </>
   );
 };
