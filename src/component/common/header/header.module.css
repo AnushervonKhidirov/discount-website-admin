@@ -1,0 +1,18 @@
+.header {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+.header_content {
+  display: grid;
+  grid-template-areas: 'profile_btn navigation';
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.profile_btn {
+  grid-area: 'profile_btn';
+}
+
+.navigation {
+  grid-area: 'navigation';
+}

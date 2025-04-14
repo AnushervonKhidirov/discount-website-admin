@@ -8,7 +8,7 @@ import { Form as FormAnt, Button, Typography } from 'antd/es';
 
 const { Title } = Typography;
 
-export const Form: FC<FormProps> = ({ children, title, onSubmit, className }) => {
+export const Form: FC<FormProps> = ({ children, title, onSubmit, submitBtnText, className }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onFinish: FormPropsAnt['onFinish'] = async values => {
@@ -31,7 +31,7 @@ export const Form: FC<FormProps> = ({ children, title, onSubmit, className }) =>
       {children}
 
       <Button type="primary" htmlType="submit" loading={isLoading}>
-        Submit
+        {submitBtnText ?? 'Submit'}
       </Button>
     </FormAnt>
   );
