@@ -16,25 +16,29 @@ type MenuItem = Required<MenuProps>['items'][number];
 const menuItems: MenuItem[] = [
   {
     label: <Link href={Page.Users}>Users</Link>,
-    key: Page.Users,
+    key: getFromUrl(Page.Users),
   },
   {
     label: <Link href={Page.Companies}>Companies</Link>,
-    key: Page.Companies,
+    key: getFromUrl(Page.Companies),
   },
   {
     label: <Link href={Page.Banks}>Banks</Link>,
-    key: Page.Banks,
+    key: getFromUrl(Page.Banks),
   },
   {
     label: <Link href={Page.Discounts}>Discounts</Link>,
-    key: Page.Discounts,
+    key: getFromUrl(Page.Discounts),
   },
   {
     label: <Link href={Page.Cashbacks}>Cashback</Link>,
-    key: Page.Cashbacks,
+    key: getFromUrl(Page.Cashbacks),
   },
 ];
+
+function getFromUrl(url: string) {
+  return url.replaceAll('/', ' ').trim().split(' ')[0];
+}
 
 const Navigation: FC<AdditionalProps> = ({ className }) => {
   const pathname = usePathname();
@@ -42,7 +46,7 @@ const Navigation: FC<AdditionalProps> = ({ className }) => {
     <Menu
       className={classNames(classes.navigation, className)}
       items={menuItems}
-      selectedKeys={[pathname]}
+      selectedKeys={[getFromUrl(pathname)]}
     />
   );
 };
