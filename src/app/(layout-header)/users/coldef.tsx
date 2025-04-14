@@ -1,8 +1,9 @@
 import type { TableColumnsType } from 'antd/es';
 import type { User } from '@type/user.type';
 
-import { Button, Flex, Tag } from 'antd/es';
+import { Flex, Tag } from 'antd/es';
 import { Page } from '@constant/link.constant';
+import Link from 'next/link';
 
 export const columns: TableColumnsType<User> = [
   {
@@ -48,9 +49,9 @@ export const columns: TableColumnsType<User> = [
     render: (_, user: User) => {
       return (
         <Flex gap={10}>
-          <Button type="link" href={`${Page.Users}/${user.id}`}>
+          <Link type="link" href={`${Page.Users}/${user.id}`}>
             View Profile
-          </Button>
+          </Link>
         </Flex>
       );
     },
