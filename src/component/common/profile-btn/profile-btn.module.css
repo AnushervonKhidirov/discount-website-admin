@@ -1,0 +1,27 @@
+.profile_btn {
+  width: max-content;
+  height: auto;
+  padding: 0.5em 1em;
+}
+
+.profile_btn a {
+  display: grid;
+  grid-template-areas: 'avatar .' 'avatar username' 'avatar role' 'avatar .';
+  justify-items: start;
+  align-items: center;
+  gap: 0 1em;
+}
+
+.avatar {
+  grid-area: avatar;
+}
+
+.username {
+  grid-area: username;
+}
+
+.role {
+  grid-area: role;
+  font-size: 0.8em;
+  text-transform: capitalize;
+}

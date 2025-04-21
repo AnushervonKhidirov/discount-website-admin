@@ -1,0 +1,11 @@
+.formCard {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  width: 40vw;
+  max-width: 400px;
+}

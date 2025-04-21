@@ -1,21 +1,37 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
-  "esModuleInterop": true,
-  "verbatimModuleSyntax": true,
-  "noEmit": true,
-  "strictNullChecks": true,
-  "resolveJsonModule": true,
-  "skipLibCheck": true,
-  "strict": true,
-  "paths": {
-    "@pages/*": ["./src/pages/*"],
-    "@type/*": ["./src/util/type/*"],
-    "@service/*": ["./src/service/*"],
-    "@constant/*": ["./src/util/constant/*"],
-    "@error/*": ["./src/util/error/*"],
-    "@helper/*": ["./src/util/helper/*"],
-    "@store/*": ["./src/store/*"],
-    "@component/*": ["./src/component/*"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@pages/*": ["./src/pages/*"],
+      "@type/*": ["./src/util/type/*"],
+      "@service/*": ["./src/service/*"],
+      "@constant/*": ["./src/util/constant/*"],
+      "@error/*": ["./src/util/error/*"],
+      "@helper/*": ["./src/util/helper/*"],
+      "@store/*": ["./src/store/*"],
+      "@component/*": ["./src/component/*"],
+      "@layout/*": ["./src/layout/*"]
+    }
   }
 }

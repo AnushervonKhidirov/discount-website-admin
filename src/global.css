@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-areas: 'main';
+}
+
+body:has(header) {
+  gap: 1rem;
+  grid-template-areas: 'header' 'main';
+  grid-template-rows: max-content 1fr;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
