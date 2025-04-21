@@ -1,0 +1,21 @@
+{
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "esModuleInterop": true,
+  "verbatimModuleSyntax": true,
+  "noEmit": true,
+  "strictNullChecks": true,
+  "resolveJsonModule": true,
+  "skipLibCheck": true,
+  "strict": true,
+  "paths": {
+    "@pages/*": ["./src/pages/*"],
+    "@type/*": ["./src/util/type/*"],
+    "@service/*": ["./src/service/*"],
+    "@constant/*": ["./src/util/constant/*"],
+    "@error/*": ["./src/util/error/*"],
+    "@helper/*": ["./src/util/helper/*"],
+    "@store/*": ["./src/store/*"],
+    "@component/*": ["./src/component/*"]
+  }
+}
